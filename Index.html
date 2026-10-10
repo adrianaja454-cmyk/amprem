@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AM Premium | OrinBerkedut</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:Inter,Arial,sans-serif;
+  color:#fff;
+  background:#020805;
+  overflow-x:hidden;
+}
+
+/* BACKGROUND */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-3;
+  background:
+    radial-gradient(circle at 15% 20%,rgba(16,185,129,.24),transparent 28%),
+    radial-gradient(circle at 85% 25%,rgba(34,197,94,.17),transparent 25%),
+    radial-gradient(circle at 50% 90%,rgba(5,150,105,.18),transparent 30%),
+    #020805;
+}
+
+.grid{
+  position:fixed;
+  inset:0;
+  z-index:-2;
+  opacity:.13;
+  background-image:
+    linear-gradient(rgba(52,211,153,.12) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(52,211,153,.12) 1px,transparent 1px);
+  background-size:50px 50px;
+  mask-image:linear-gradient(to bottom,black,transparent);
+}
+
+.orb{
+  position:fixed;
+  width:350px;
+  height:350px;
+  border-radius:50%;
+  filter:blur(100px);
+  opacity:.2;
+  z-index:-1;
+  animation:float 8s ease-in-out infinite;
+}
+
+.orb.one{
+  background:#10b981;
+  top:10%;
+  left:-120px;
+}
+
+.orb.two{
+  background:#22c55e;
+  right:-120px;
+  bottom:10%;
+  animation-delay:2s;
+}
+
+@keyframes float{
+  50%{
+    transform:translateY(-50px) scale(1.15);
+  }
+}
+
+/* NAVBAR */
+nav{
+  width:100%;
+  padding:22px 7%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:absolute;
+  top:0;
+  left:0;
+  z-index:10;
+}
+
+.logo{
+  font-weight:900;
+  font-size:22px;
+  letter-spacing:-1px;
+}
+
+.logo span{
+  color:#34d399;
+}
+
+.creator{
+  position:absolute;
+  right:7%;
+  top:27px;
+  font-size:10px;
+  letter-spacing:1.5px;
+  color:rgba(167,243,208,.65);
+  text-transform:uppercase;
+  font-weight:600;
+}
+
+.nav-btn{
+  margin-right:135px;
+  text-decoration:none;
+  color:#fff;
+  border:1px solid rgba(52,211,153,.2);
+  padding:10px 18px;
+  border-radius:50px;
+  background:rgba(16,185,129,.05);
+  backdrop-filter:blur(15px);
+}
+
+/* HERO */
+.hero{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:120px 20px 70px;
+}
+
+.hero-content{
+  max-width:900px;
+}
+
+.pill{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:9px 15px;
+  border-radius:50px;
+  background:rgba(16,185,129,.09);
+  border:1px solid rgba(52,211,153,.3);
+  color:#a7f3d0;
+  font-size:13px;
+  margin-bottom:25px;
+  box-shadow:0 0 30px rgba(16,185,129,.1);
+}
+
+.dot{
+  width:7px;
+  height:7px;
+  background:#4ade80;
+  border-radius:50%;
+  box-shadow:0 0 12px #4ade80;
+  animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+  50%{
+    opacity:.3;
+    transform:scale(.7);
+  }
+}
+
+h1{
+  font-size:clamp(48px,9vw,100px);
+  line-height:.95;
+  letter-spacing:-6px;
+  font-weight:900;
+  background:linear-gradient(
+    100deg,
+    #fff 10%,
+    #d1fae5 40%,
+    #34d399 65%,
+    #86efac
+  );
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.hero p{
+  max-width:650px;
+  margin:28px auto 35px;
+  color:#9ca3af;
+  font-size:17px;
+  line-height:1.7;
+}
+
+/* BUTTON */
+.main-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  text-decoration:none;
+  color:#fff;
+  font-weight:800;
+  padding:17px 28px;
+  border-radius:15px;
+  background:linear-gradient(135deg,#059669,#22c55e);
+  box-shadow:
+    0 0 25px rgba(16,185,129,.3),
+    0 15px 45px rgba(0,0,0,.4);
+  transition:.25s;
+}
+
+.main-btn:hover{
+  transform:translateY(-4px) scale(1.02);
+  box-shadow:
+    0 0 45px rgba(16,185,129,.5),
+    0 20px 50px rgba(0,0,0,.5);
+}
+
+/* STATS */
+.stats{
+  display:flex;
+  justify-content:center;
+  gap:60px;
+  margin-top:65px;
+  flex-wrap:wrap;
+}
+
+.stat strong{
+  display:block;
+  font-size:25px;
+}
+
+.stat span{
+  color:#6b7280;
+  font-size:12px;
+}
+
+/* SECTION */
+.section{
+  padding:110px 20px;
+  max-width:1100px;
+  margin:auto;
+}
+
+.section-title{
+  text-align:center;
+  margin-bottom:55px;
+}
+
+.section-title small{
+  color:#34d399;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:3px;
+}
+
+.section-title h2{
+  font-size:42px;
+  margin-top:12px;
+}
+
+/* PRODUCT CARD */
+.card{
+  max-width:450px;
+  margin:auto;
+  padding:35px;
+  position:relative;
+  border-radius:30px;
+  background:linear-gradient(
+    145deg,
+    rgba(255,255,255,.09),
+    rgba(16,185,129,.035)
+  );
+  border:1px solid rgba(52,211,153,.15);
+  backdrop-filter:blur(25px);
+  box-shadow:0 40px 100px rgba(0,0,0,.5);
+  overflow:hidden;
+}
+
+.card::before{
+  content:"";
+  position:absolute;
+  width:220px;
+  height:220px;
+  background:#10b981;
+  filter:blur(100px);
+  opacity:.18;
+  right:-100px;
+  top:-100px;
+}
+
+.card-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:relative;
+}
+
+.product-name{
+  font-size:20px;
+  font-weight:800;
+}
+
+.tag{
+  padding:7px 12px;
+  border-radius:20px;
+  background:rgba(34,197,94,.1);
+  color:#86efac;
+  font-size:11px;
+  border:1px solid rgba(74,222,128,.2);
+}
+
+.price{
+  margin-top:30px;
+  font-size:53px;
+  font-weight:900;
+  letter-spacing:-3px;
+}
+
+.price small{
+  font-size:14px;
+  color:#71717a;
+  letter-spacing:0;
+}
+
+.features{
+  list-style:none;
+  margin:30px 0;
+}
+
+.features li{
+  padding:12px 0;
+  border-bottom:1px solid rgba(255,255,255,.07);
+  color:#d4d4d8;
+}
+
+.features li:last-child{
+  border:0;
+}
+
+.check{
+  color:#34d399;
+  margin-right:10px;
+  font-weight:900;
+}
+
+/* WHATSAPP */
+.buy{
+  display:block;
+  text-align:center;
+  padding:17px;
+  border-radius:15px;
+  text-decoration:none;
+  color:white;
+  font-weight:800;
+  background:linear-gradient(135deg,#059669,#16a34a);
+  box-shadow:0 10px 35px rgba(16,185,129,.2);
+  transition:.2s;
+}
+
+.buy:hover{
+  transform:translateY(-3px);
+  box-shadow:0 15px 45px rgba(16,185,129,.35);
+}
+
+/* FEATURES */
+.feature-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.feature{
+  padding:25px;
+  border:1px solid rgba(52,211,153,.08);
+  background:rgba(16,185,129,.025);
+  border-radius:20px;
+  transition:.25s;
+}
+
+.feature:hover{
+  transform:translateY(-7px);
+  border-color:rgba(52,211,153,.3);
+}
+
+.icon{
+  font-size:28px;
+  margin-bottom:18px;
+}
+
+.feature h3{
+  margin-bottom:9px;
+}
+
+.feature p{
+  color:#777;
+  font-size:14px;
+  line-height:1.6;
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:50px 20px;
+  color:#52525b;
+  font-size:12px;
+  border-top:1px solid rgba(255,255,255,.06);
+}
+
+/* MOBILE */
+@media(max-width:700px){
+
+  nav{
+    padding:18px 5%;
+  }
+
+  h1{
+    letter-spacing:-3px;
+  }
+
+  .creator{
+    right:5%;
+    top:22px;
+    font-size:8px;
+  }
+
+  .nav-btn{
+    margin-right:100px;
+    padding:8px 12px;
+    font-size:11px;
+  }
+
+  .stats{
+    gap:30px;
+  }
+
+  .feature-grid{
+    grid-template-columns:1fr;
+  }
+
+  .card{
+    padding:25px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="grid"></div>
+<div class="orb one"></div>
+<div class="orb two"></div>
+
+<nav>
+
+  <div class="logo">
+    AM<span>PREMIUM</span>
+  </div>
+
+  <a href="#buy" class="nav-btn">
+    Paket
+  </a>
+
+  <div class="creator">
+    by OrinBerkedut
+  </div>
+
+</nav>
+
+<section class="hero">
+
+  <div class="hero-content">
+
+    <div class="pill">
+      <span class="dot"></span>
+      PROMO TERSEDIA
+    </div>
+
+    <h1>
+      EDIT LIKE<br>
+      NEVER BEFORE.
+    </h1>
+
+    <p>
+      Nikmati pengalaman editing yang lebih lengkap
+      dengan paket premium untuk kreator.
+    </p>
+
+    <a href="#buy" class="main-btn">
+      🚀 LIHAT PENAWARAN
+    </a>
+
+    <div class="stats">
+
+      <div class="stat">
+        <strong>Rp5K</strong>
+        <span>HARGA</span>
+      </div>
+
+      <div class="stat">
+        <strong>1 Tahun</strong>
+        <span>DURASI</span>
+      </div>
+
+      <div class="stat">
+        <strong>WhatsApp</strong>
+        <span>ORDER</span>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section class="section" id="buy">
+
+  <div class="section-title">
+    <small>Simple Pricing</small>
+    <h2>Pilih Paketmu</h2>
+  </div>
+
+  <div class="card">
+
+    <div class="card-top">
+
+      <div class="product-name">
+        Alight Motion Premium
+      </div>
+
+      <div class="tag">
+        AVAILABLE
+      </div>
+
+    </div>
+
+    <div class="price">
+      Rp5.000
+      <small>/ tahun</small>
+    </div>
+
+    <ul class="features">
+
+      <li>
+        <span class="check">✓</span>
+        Akses sesuai paket
+      </li>
+
+      <li>
+        <span class="check">✓</span>
+        Fitur premium
+      </li>
+
+      <li>
+        <span class="check">✓</span>
+        Durasi 1 tahun
+      </li>
+
+      <li>
+        <span class="check">✓</span>
+        Order via WhatsApp
+      </li>
+
+    </ul>
+
+    <a
+      class="buy"
+      target="_blank"
+      rel="noopener noreferrer"
+      href="https://wa.me/6283137005378?text=Halo%20kak%2C%20saya%20mau%20order%20Alight%20Motion%20Premium%201%20tahun%20seharga%20Rp5.000."
+    >
+      💬 ORDER SEKARANG
+    </a>
+
+  </div>
+
+</section>
+
+<section class="section">
+
+  <div class="section-title">
+    <small>Why Choose Us</small>
+    <h2>Simple. Fast. Powerful.</h2>
+  </div>
+
+  <div class="feature-grid">
+
+    <div class="feature">
+      <div class="icon">⚡</div>
+      <h3>Fast Order</h3>
+      <p>
+        Hubungi WhatsApp dan lakukan pemesanan
+        dengan proses yang sederhana.
+      </p>
+    </div>
+
+    <div class="feature">
+      <div class="icon">🔐</div>
+      <h3>Transparan</h3>
+      <p>
+        Harga dan durasi paket ditampilkan
+        dengan jelas sebelum pemesanan.
+      </p>
+    </div>
+
+    <div class="feature">
+      <div class="icon">🎬</div>
+      <h3>Untuk Kreator</h3>
+      <p>
+        Cocok untuk kebutuhan editing video
+        dan konten kreator.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+<footer>
+  © 2026 AM Premium • by OrinBerkedut
+  <br><br>
+  Bukan situs resmi Alight Motion.
+</footer>
+
+</body>
+</html>
